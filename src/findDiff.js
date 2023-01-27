@@ -21,13 +21,14 @@ export const compareFiles = (file1, file2) => {
     .map((key) => {
       if (file2[key] === undefined) {
         return `\n  - ${key}: ${file1[key]}`;
-      } else if (file1[key] === undefined) {
-        return `\n  + ${key}: ${file2[key]}`;
-      } else if (file1[key] === file2[key]) {
-        return `\n    ${key}: ${file1[key]}`;
-      } else if (file1[key] !== file2[key]) {
-        return `\n  - ${key}: ${file1[key]}\n  + ${key}: ${file2[key]}`;
       }
+      if (file1[key] === undefined) {
+        return `\n  + ${key}: ${file2[key]}`;
+      }
+      if (file1[key] === file2[key]) {
+        return `\n    ${key}: ${file1[key]}`;
+      }
+      return `\n  - ${key}: ${file1[key]}\n  + ${key}: ${file2[key]}`;
     })
     .join('');
   const res1 = `{${result}\n}`;
