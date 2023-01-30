@@ -9,6 +9,15 @@ export const findFullPath = (filepath) => {
 
 export const findExtname = (filepath) => {
   const extname = path.extname(findFullPath(filepath));
+
+  if (extname === '.json') {
+    return 'json';
+  }
+
+  if (extname === '.yml' || extname === '.yaml') {
+    return 'yaml';
+  }
+
   return extname;
 };
 
