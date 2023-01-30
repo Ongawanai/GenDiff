@@ -1,4 +1,4 @@
-import { compareFiles, findFullPath, findExtname } from './findDiff.js';
+import { compareFiles } from './findDiff.js';
 import { parceFile } from './parsers.js';
 
 const genDiff = (filepath1, filepath2) => {
