@@ -1,5 +1,5 @@
 import { compareFiles } from './findDiff.js';
-import { parceFile } from './parsers.js';
+import parceFile from './parsers.js';
 
 const genDiff = (filepath1, filepath2) => {
   const file1 = parceFile(filepath1);
