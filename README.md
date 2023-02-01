@@ -9,3 +9,6 @@ Comparing two flat JSON files:
 
 Comparing two flat yml files:
 [![asciicast](https://asciinema.org/a/555681.svg)](https://asciinema.org/a/555681)
+
+Comparing two deep files:
+[![asciicast](https://asciinema.org/a/556311.svg)](https://asciinema.org/a/556311)
