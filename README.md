@@ -10,5 +10,8 @@ Comparing two flat JSON files:
 Comparing two flat yml files:
 [![asciicast](https://asciinema.org/a/555681.svg)](https://asciinema.org/a/555681)
 
-Comparing two deep files:
+Comparing two deep files (default silization):
 [![asciicast](https://asciinema.org/a/556311.svg)](https://asciinema.org/a/556311)
+
+Comparing two deep files (plain silization):
+[![asciicast](https://asciinema.org/a/556711.svg)](https://asciinema.org/a/556711)

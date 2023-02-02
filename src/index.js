@@ -1,6 +1,6 @@
 import { compareFiles } from './findDiff.js';
 import parceFile from './parsers.js';
-import formatter from './formatters/formatter.js';
+import formatter from './formatters/index.js';
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const file1 = parceFile(filepath1);
