@@ -15,24 +15,21 @@ const stringify = (value, depth = 1) => {
 const stylish = (resultOfComparing) => {
   const iter = (arr, depth = 1) => {
     const text = arr.map((obj) => {
-      if (obj.status === 'unchanged') {
-        return `${getSpace(depth)}  ${obj.key}: ${stringify(obj.value, depth + 1)}`;
+      const genLine = (val, sign = ' ') => `${getSpace(depth)}${sign} ${obj.key}: ${stringify(val, depth + 1)}`;
+      switch (obj.status) {
+        case 'unchanged':
+          return genLine(obj.value);
+        case 'added':
+          return genLine(obj.value, '+');
+        case 'deleted':
+          return genLine(obj.value, '-');
+        case 'nested':
+          return `${getSpace(depth)}  ${obj.key}: {\n${iter(obj.value, depth + 1)}\n${getSpaceBeforeBrecket(depth)}}`;
+        case 'changed':
+          return `${genLine(obj.oldValue, '-')}\n${genLine(obj.newValue, '+')}`;
+        default:
+          throw new Error(`Status ${obj.status} does not supported`);
       }
-      if (obj.status === 'added') {
-        return `${getSpace(depth)}+ ${obj.key}: ${stringify(obj.value, depth + 1)}`;
-      }
-      if (obj.status === 'deleted') {
-        return `${getSpace(depth)}- ${obj.key}: ${stringify(obj.value, depth + 1)}`;
-      }
-      if (obj.status === 'nested') {
-        return `${getSpace(depth)}  ${obj.key}: {\n${iter(obj.value, depth + 1)}\n${getSpaceBeforeBrecket(depth)}}`;
-      }
-      if (obj.status === 'changed') {
-        const oldValue = `${getSpace(depth)}- ${obj.key}: ${stringify(obj.oldValue, depth + 1)}`;
-        const newValue = `${getSpace(depth)}+ ${obj.key}: ${stringify(obj.newValue, depth + 1)}`;
-        return [oldValue, newValue].join('\n');
-      }
-      return obj;
     });
     return text.join('\n');
   };
