@@ -4,11 +4,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c2d12906105bf7d1971f/maintainability)](https://codeclimate.com/github/Ongawanai/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c2d12906105bf7d1971f/test_coverage)](https://codeclimate.com/github/Ongawanai/frontend-project-46/test_coverage)
 
-[b]Description:[/b]
+<b>Description:</b>
 
 GenDiff is a utilite that compares two files of JSON or YAML(yml) format and show you the difference between them.
 
-[b]How to setup:[b/]
+<b>How to setup:</b>
 
 1. Copy this repo with command:
 `git clone git@github.com:Ongawanai/frontend-project-44.git`
