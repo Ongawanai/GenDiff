@@ -22,41 +22,26 @@ export const findExtname = (filepath) => {
 };
 
 export const compareFiles = (file1, file2) => {
-  const file1Keys = Object.keys(file1);
-  const file2Keys = Object.keys(file2);
-
-  const allKeys = _.sortBy(_.union(file1Keys, file2Keys));
+  const allKeys = _.sortBy(_.union(Object.keys(file1), Object.keys(file2)));
 
   const result = allKeys.map((key) => {
     const value1 = file1[key];
     const value2 = file2[key];
     if (!_.has(file2, key)) {
-      return { status: 'deleted', key, value: value1 };
+      return { status: 'deleted', name: key, value: value1 };
     }
     if (!_.has(file1, key)) {
-      return {
-        status: 'added',
-        key,
-        value: value2,
-      };
+      return { status: 'added', name: key, value: value2 };
     }
     if (value1 === value2) {
-      return {
-        status: 'unchanged',
-        key,
-        value: value1,
-      };
+      return { status: 'unchanged', name: key, value: value1 };
     }
     if (_.isObject(value1) && _.isObject(value2)) {
-      return {
-        status: 'nested',
-        key,
-        value: compareFiles(value1, value2),
-      };
+      return { status: 'nested', name: key, value: compareFiles(value1, value2) };
     }
     return {
       status: 'changed',
-      key,
+      name: key,
       oldValue: value1,
       newValue: value2,
     };

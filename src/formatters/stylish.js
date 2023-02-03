@@ -15,7 +15,7 @@ const stringify = (value, depth = 1) => {
 const stylish = (resultOfComparing) => {
   const iter = (arr, depth = 1) => {
     const text = arr.map((obj) => {
-      const genLine = (val, sign = ' ') => `${getSpace(depth)}${sign} ${obj.key}: ${stringify(val, depth + 1)}`;
+      const genLine = (val, sign = ' ') => `${getSpace(depth)}${sign} ${obj.name}: ${stringify(val, depth + 1)}`;
       switch (obj.status) {
         case 'unchanged':
           return genLine(obj.value);
@@ -24,7 +24,7 @@ const stylish = (resultOfComparing) => {
         case 'deleted':
           return genLine(obj.value, '-');
         case 'nested':
-          return `${getSpace(depth)}  ${obj.key}: {\n${iter(obj.value, depth + 1)}\n${getSpaceBeforeBrecket(depth)}}`;
+          return `${getSpace(depth)}  ${obj.name}: {\n${iter(obj.value, depth + 1)}\n${getSpaceBeforeBrecket(depth)}}`;
         case 'changed':
           return `${genLine(obj.oldValue, '-')}\n${genLine(obj.newValue, '+')}`;
         default:

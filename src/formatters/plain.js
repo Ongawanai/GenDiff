@@ -12,7 +12,7 @@ export const plain = (resultOfComparing) => {
   const iter = (arr, parent) => {
     const text = arr
       .flatMap((obj) => {
-        const parents = parent ? `${parent}.${obj.key}` : obj.key;
+        const parents = parent ? `${parent}.${obj.name}` : obj.name;
         switch (obj.status) {
           case 'nested':
             return iter(obj.value, parents);
