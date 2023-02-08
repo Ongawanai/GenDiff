@@ -1,16 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import fs from 'fs';
 import yaml from 'js-yaml';
-import { findExtname, findFullPath } from './findDiff.js';
 
-const parceFile = (file) => {
-  const fileExtname = findExtname(file);
-  if (fileExtname === 'json') {
-    const parsedFile = JSON.parse(fs.readFileSync(findFullPath(file)));
-    return parsedFile;
+const getParcedContent = (data, extension) => {
+  switch (extension) {
+    case 'json':
+      return JSON.parse(data);
+    case 'yaml':
+    case 'yml':
+      return yaml.load(data);
+    default:
+      throw new Error(`Extension ${extension} does not supported`);
   }
-  const parsedFile = yaml.load(fs.readFileSync(findFullPath(file)));
-  return parsedFile;
 };
 
-export default parceFile;
+export default getParcedContent;
