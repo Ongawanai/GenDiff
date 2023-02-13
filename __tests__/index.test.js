@@ -20,6 +20,7 @@ test.each(extensions)('GenDiff test', (ext) => {
   const file2 = getFixturePath(`file2.${ext}`);
 
   expect(genDiff(file1, file2)).toStrictEqual(expectedResult);
+  expect(genDiff(file1, file2, 'stylish')).toStrictEqual(expectedResult);
   expect(genDiff(file1, file2, 'plain')).toStrictEqual(expectedResultPlain);
   expect(genDiff(file1, file2, 'json')).toStrictEqual(expectedResultJSON);
 });
