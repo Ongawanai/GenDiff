@@ -21,7 +21,7 @@ sudo npm link
 ```
 
 
-[b] Examples: [/b]
+<b> Examples: </b>
 Comparing two flat JSON files:
 [![asciicast](https://asciinema.org/a/554146.svg)](https://asciinema.org/a/554146)
 
